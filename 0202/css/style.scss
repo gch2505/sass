@@ -1,0 +1,134 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap');
+
+
+$font-s01:12px;
+$title01:16px;
+$color00:#333;
+$color01:#00f;
+$color02:#f00;
+$color03:#0f0;
+$color04:#ff0;
+$color05:#fff;
+
+//시간변수
+$time:0.5s;
+
+h2{
+  font-size:$title01;
+  color:$color01;
+}
+
+@mixin h3txt{
+  font-family: "Noto Sans KR", "맑은 고딕", arial, sans-serif;
+  font-size:30px;
+  color:$color02;
+}
+@mixin btn{
+  padding:4px 10px;
+  color:$color00;
+}
+@mixin txt01{
+  width:250px;
+  text-overflow:ellipsis;
+  overflow:hidden;
+  white-space:nowrap;
+}
+
+
+.title01{
+  @include h3txt;
+}
+.btn01{
+  @include btn;
+  background:$color03;
+}
+.btn02{
+  @include btn;
+  background:$color04;
+}
+.p01{
+  @include txt01;
+}
+
+//공통버튼서식(글자관련)
+@mixin btnFont{
+  font-family:"궁서체";
+  font-weight:bold;
+  font-size:20px;
+}
+
+//공통버튼서식(컬러,여백관련)
+@mixin btnArea{
+  border:1px solid #ccc;
+  padding:5px 30px;
+  border-radius:30px;
+}
+
+@mixin btn{
+  @include btnFont;
+  @include btnArea;
+  transition:$time;
+}
+
+.btn03{@include btn; background:$color04;}
+.btn04{@include btn; background:$color03;}
+.btn03:hover, .btn04:hover{
+  background:$color02;
+  color:$color05;
+}
+
+
+//모바일 bar서식
+.toggle_btn{
+  width:40px; height:40px;
+  display:block;
+  border:1px solid #ccc;
+  position:relative;
+}
+#toggle:checked + label .bar01{transform:rotate(45deg); top:18px !important;}
+#toggle:checked + label .bar02{display:none;}
+#toggle:checked + label .bar03{transform:rotate(-45deg); top:18px !important;}
+
+@mixin bar{
+  position:absolute;
+  display:inline-block;
+  width:38px; height:3px;
+  background:$color00;
+  transition:$time;
+  left:1px;
+}
+.bar{@include bar;}
+.bar01{top:5px;}
+.bar02{top:18px;}
+.bar03{bottom:5px;}
+
+.toggle{
+  position:relative;
+  width:40px; height:40px;
+  border:1px solid $color02;
+  cursor:pointer;
+}
+
+//span 회전하기 위한 클래스명
+.rotate45{transform:rotate(45deg); top:18px !important;}
+.rotate0{transform:rotate(0deg); display:none;}
+.rotate_45{transform:rotate(-45deg); top:18px !important;}
+
+@mixin sns{
+  font-size:30px;
+  text-align:center;
+  border:1px solid $color00;
+  padding:4px 6px;
+  background:$color00;
+  color:$color05;
+}
+
+
+.sns i{
+  @include sns;
+  transition:$time;
+}
+.sns i:hover{
+  color:$color02;
+}
